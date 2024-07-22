@@ -1,0 +1,21 @@
+.image-table-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.image-table td {
+    padding: 10px;
+}
+
+.image-item {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+}

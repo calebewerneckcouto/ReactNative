@@ -1,0 +1,26 @@
+.pokedex-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.alunos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.alunos-table th, .alunos-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.alunos-table th {
+    background-color: #f16261;
+    font-weight: bold;
+}
+
+.alunos-table tbody tr:nth-child(even) {
+    background-color: #f16262;
+}

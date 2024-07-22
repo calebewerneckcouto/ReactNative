@@ -1,0 +1,9 @@
+/* Footer.css */
+.footer {
+    background-color: darkcyan;
+    color: black;
+    margin: 0;
+    text-align: center;
+    font-size: larger;
+    padding: 10px 0; /* Adiciona um espaçamento interno de 10px acima e abaixo */
+}
