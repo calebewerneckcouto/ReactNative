@@ -1,5 +1,5 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose(); // Verbose para detalhes adicionais
+const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
@@ -12,14 +12,15 @@ const secretKey = 'mysecretkey'; // Chave secreta para assinar o token JWT
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conectar ao banco de dados SQLite (cria um arquivo 'database.sqlite' no diretório atual)
+// Conectar ao banco de dados SQLite
 const dbPath = path.resolve(__dirname, 'database.sqlite');
 const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados SQLite:', err.message);
     } else {
         console.log('Conectado ao banco de dados SQLite');
-        // Criar tabela de exemplo (substitua com suas tabelas reais)
+
+        // Criar tabelas se não existirem
         db.run(`CREATE TABLE IF NOT EXISTS login (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             login TEXT,
@@ -41,7 +42,7 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CR
         db.get(`SELECT * FROM login LIMIT 1`, async (err, row) => {
             if (!row) {
                 const insertLogin = 'INSERT INTO login (login, senha) VALUES (?, ?)';
-                db.run(insertLogin, ['cwc3d', 'cwc3d']);
+                db.run(insertLogin, ['cwc3d', 'cwc3d']); // Login e senha em texto plano 'cwc3d'
                 db.run(insertLogin, ['user2', 'password2']);
                 console.log('Dados fictícios inseridos na tabela login');
             }
@@ -62,10 +63,6 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CR
 // Endpoint de login
 app.post('/api/login', async (req, res) => {
     const { login, senha } = req.body;
-
-    if (!senha) {
-        return res.status(400).send('Senha não pode ser vazia');
-    }
 
     try {
         const sql = 'SELECT * FROM login WHERE login = ? AND senha = ?';
@@ -117,23 +114,35 @@ app.post('/api/logout', async (req, res) => {
     }
 });
 
-// Endpoint para executar consultas SQL
+// Endpoint para executar SQL genérico
 app.post('/api/execute-sql', async (req, res) => {
     const { sql } = req.body;
 
     try {
+        // Executar a consulta SQL fornecida no corpo da requisição
         db.all(sql, [], (err, rows) => {
             if (err) {
                 console.error(err.message);
                 return res.status(500).send('Erro ao executar consulta SQL');
             }
-            res.json(rows);
+
+            // Executar o SQL: SELECT * FROM alunos
+            db.all('SELECT * FROM alunos', [], (err, alunos) => {
+                if (err) {
+                    console.error(err.message);
+                    return res.status(500).send('Erro ao buscar alunos');
+                }
+
+                // Enviar resposta com os resultados da consulta de alunos
+                res.json(alunos);
+            });
         });
     } catch (err) {
         console.error(err);
         res.status(500).send('Erro no servidor');
     }
 });
+
 
 // Iniciar servidor
 app.listen(port, () => {
