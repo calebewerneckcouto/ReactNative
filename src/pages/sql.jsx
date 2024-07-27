@@ -16,6 +16,12 @@ function SQL() {
         navigate('/jsonplaceholder');
     };
 
+    const handleCardapio = () => {
+        navigate('/heroinput');
+    };
+
+    
+
     const handleViaCep = () => {
         navigate('/cep');
     };
@@ -88,6 +94,7 @@ function SQL() {
                 <button onClick={handleJsonPlaceHolder}>Api PlaceHolder</button>
                 <button onClick={handleLogout}>Logout</button>
                 <button onClick={handleViaCep} >Api Via Cep</button>
+                <button onClick={handleCardapio} >Cardápio</button>
 
             </div>
             <textarea
