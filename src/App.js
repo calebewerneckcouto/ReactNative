@@ -4,6 +4,8 @@ import Main from './pages/main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Comandos from './pages/comandos';
 import CEP from './pages/cep';
+import Card from './pages/card';
+import HeroInputField from './pages/heroinput'
 
 import SQL from './pages/sql';
 import HOLDER from './pages/jsonplaceholder';
@@ -33,6 +35,10 @@ function App() {
             <Route path='/sql' element={<SQL />} />
             <Route path='/comandos' element={<Comandos />} />
             <Route path='/cep' element={<CEP />} />
+            <Route path='/heroinput' element={<HeroInputField />} />
+            <Route path='/card' element={<Card />} />
+
+
           </>
         )}
       </Routes>
