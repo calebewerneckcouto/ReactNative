@@ -10,6 +10,7 @@
 
 .cardImage {
     width: 100px;
+    border-radius: 15px;
     
 }
 
@@ -21,4 +22,28 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+}
+
+.modal-content {
+    background-color: rgb(69, 38, 38);
+    padding: 20px;
+    border-radius: 5px;
+    width: 40%;
+    max-width: 320px;
+    text-align: center;
+    color: burlywood;
+    position: relative;
 }
