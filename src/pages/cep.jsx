@@ -52,6 +52,10 @@ const handleJsonPlaceHolder = () => {
         navigate('/comandos');
     };
 
+    const handleCardapio = ()=>{
+        navigate('/heroinput');
+    };
+
     const buscarEndereco = async () => {
         try {
             const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -81,6 +85,9 @@ const handleJsonPlaceHolder = () => {
             <button onClick={handleJsonPlaceHolder}>Api PlaceHolder</button>
             <button onClick={handleLogout}>Logout</button>
             <button onClick={handleComandos}>Comandos Sql</button>
+            <button onClick={handleCardapio}>Cardápio</button>
+
+            
             <div className="form-container"> {/* Aplicando a classe "form-container" para estilizar o formulário */}
                 <label htmlFor="cepInput">Digite o CEP:</label>
                 <input
