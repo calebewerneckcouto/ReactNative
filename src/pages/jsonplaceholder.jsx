@@ -15,6 +15,10 @@ function HOLDER() {
         navigate('/sql');
     };
 
+    const handleCardapio = () => {
+        navigate('/heroinput');
+    };
+
    
 
     const handleCep = ()=>{
@@ -69,6 +73,9 @@ function HOLDER() {
             <button onClick={handleCep}>Api Via Cep</button>
             <button onClick={handleComandosSQL}>Comandos SQL</button>
             <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleCardapio}>Cardápio</button>
+
+            
             {posts.length > 0 ? (
                 <table className="posts-table">
                     <thead>
