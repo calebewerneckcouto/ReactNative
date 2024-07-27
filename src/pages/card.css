@@ -13,6 +13,10 @@
     
 }
 
+.card:hover{
+    background-color: rgb(177, 125, 125);
+}
+
 .cardContainer {
     display: flex;
     gap: 10px;
