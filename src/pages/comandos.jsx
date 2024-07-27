@@ -86,6 +86,11 @@ const handleLogout = () => {
         navigate('/sql');
     };
 
+
+    const handleHeroInput = () => {
+        navigate('/heroinput');
+    };
+
     const handleJsonPlaceHolder = () => {
         navigate('/jsonplaceholder');
     };
@@ -101,6 +106,7 @@ const handleLogout = () => {
             <button onClick={handleLogout}>Logout</button>
             <button onClick={handleCep}>Api Via Cep</button>
             <button onClick={handleJsonPlaceHolder}>Api JsonPlaceHolder</button>
+            <button onClick={handleHeroInput}>Cardápio</button>
             <div className="comandos-list">
                 {Object.keys(commandDescriptions).map((command) => (
                     <div key={command} className="comando" onClick={() => openModal(command)}>
