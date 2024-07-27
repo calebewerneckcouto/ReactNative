@@ -1,10 +1,23 @@
 // userContext.js
 import React, { createContext, useState, useContext } from 'react';
 
-const UserContext = createContext();
+const UserContext = createContext(null);
 
-export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null); // Estado para armazenar informações do usuário, como token
+const UserProvider = ({ children }) => {
+    const [pessoas, setPessoas] = useState([]);
+    const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState('')
+    const [searchByCategory, setSearchByCategory] = useState(null)
+    const values = { 
+        pessoas,
+        setPessoas,
+        loading,
+        setLoading,
+        user,
+        setUser,
+        searchByCategory,
+        setSearchByCategory,
+      }
 
     const login = (token) => {
         localStorage.setItem('token', token);
@@ -21,10 +34,10 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, login, logout, getToken }}>
-            {children}
+        <UserContext.Provider value={values}>
+          {children}
         </UserContext.Provider>
-    );
-};
-
-export const useUser = () => useContext(UserContext);
+      );
+    };
+    
+    export { UserContext, UserProvider };
