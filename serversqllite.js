@@ -42,8 +42,8 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CR
         db.get(`SELECT * FROM login LIMIT 1`, async (err, row) => {
             if (!row) {
                 const insertLogin = 'INSERT INTO login (login, senha) VALUES (?, ?)';
-                db.run(insertLogin, ['cwc3d', 'cwc3d']); // Login e senha em texto plano 'cwc3d'
-                db.run(insertLogin, ['user2', 'password2']);
+                db.run(insertLogin, ['admin', 'admin']); 
+               
                 console.log('Dados fictícios inseridos na tabela login');
             }
         });
